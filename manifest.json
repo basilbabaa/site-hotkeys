@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Site Hotkeys",
+  "version": "0.3.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsJgsVjyiEtvfm4Wx+YCm1k2aeHYUW8lxMNtdWGcZomSYd99Q4k1BpIP/I8TjggNNkbAlrWTvXGWaxU8ow9LgNZ55BvZwhkHSHlVM3xlrdyfOIl1jjKGw3F5vw0I2rWpZQpvwipdBY+8XaDXACk7Bg1w7yrUbkbYhhLpzQdfhrCjQOrsTWrAObBTCZjRR8wbEB+If6E/kbQMgUjXa2AuvqJTxPlfVFCo5TZx+yHu6ikny3iJJtJ21AJmrlPSnVVDf9TEDIOge04AGP0+P2iF9VL0tb6piqaDGmQfS4WJbiy4/VBgNMGaZz9RbeB/lS2I6iwYMTAU0nS+mt0wtxmCVyQIDAQAB",
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "description": "Per-site key sequences that jump to a saved URL on that site.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Site Hotkeys",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

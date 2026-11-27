@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font: 13px -apple-system, system-ui, sans-serif; width: 340px; margin: 0; padding: 14px; color: #1d1d1f; }
+    h1 { font-size: 13px; margin: 0 0 10px; }
+    h1 span { color: #0a66c2; }
+    label { display: block; font-weight: 600; margin: 10px 0 4px; }
+    input[type=text] { width: 100%; box-sizing: border-box; padding: 7px 8px; border: 1px solid #c7c7cc; border-radius: 6px; font: inherit; }
+    input[type=text]:focus { outline: 2px solid #0a66c2; border-color: transparent; }
+    .row { display: flex; gap: 6px; }
+    button { padding: 7px 10px; border: 1px solid #c7c7cc; border-radius: 6px; background: #f5f5f7; font: inherit; cursor: pointer; }
+    button.primary { background: #0a66c2; color: #fff; border-color: #0a66c2; width: 100%; margin-top: 12px; }
+    #keys, #listkey { font-family: ui-monospace, Menlo, monospace; letter-spacing: 1px; }
+    .hint { color: #6e6e73; font-size: 11.5px; margin-top: 3px; }
+    #msg { margin-top: 8px; min-height: 16px; font-size: 12px; }
+    #msg.err, #msg2.err { color: #c62828; } #msg.ok, #msg2.ok { color: #2e7d32; }
+    #msg2 { margin-top: 6px; min-height: 14px; font-size: 12px; }
+    ul { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid #e5e5ea; }
+    li { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #f0f0f2; }
+    li code { background: #eef3fb; padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+    li .u { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #444; }
+    li button { padding: 2px 7px; }
+    li[draggable=true] { cursor: pointer; }
+    li.editing { background: #eef3fb; box-shadow: inset 3px 0 0 #0a66c2; }
+    li.dragging { opacity: .4; }
+    li.over { box-shadow: 0 2px 0 #0a66c2; }
+    .grip { color: #aeaeb2; letter-spacing: -2px; user-select: none; }
+    .empty { color: #6e6e73; padding-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Hotkeys for <span id="domain"></span></h1>
+
+  <label for="url">Go to this URL</label>
+  <div class="row">
+    <input type="text" id="url" placeholder="https://example.com/page">
+    <button id="grab" title="Fill in the URL of the current tab">Grab current</button>
+  </div>
+
+  <label for="keys">Key sequence (up to 3 keys)</label>
+  <input type="text" id="keys" placeholder="Click here, then press your keys" readonly>
+  <div class="hint">Combine ⌘ ⌃ ⌥ ⇧ with a letter or number, or use plain keys. Example: ⌃⌥⌘K, or ⌘K then ⌘J. Backspace clears.</div>
+
+  <button class="primary" id="save">Save</button>
+  <button id="cancel" hidden style="width:100%;margin-top:6px">Cancel editing</button>
+  <div id="msg"></div>
+
+  <ul id="list"></ul>
+  <div class="hint" id="listhint">Click a shortcut to edit it. Drag ⋮⋮ to reorder.</div>
+  <label for="listkey" style="margin-top:14px">Hotkey that shows this list on any site</label>
+  <input type="text" id="listkey" readonly placeholder="Click here, then press a combination">
+  <div class="hint">Needs ⌘, ⌃ or ⌥. Backspace resets it. Press it on any page to see your shortcuts.</div>
+  <div id="msg2"></div>
+  <div style="margin-top:12px"><a href="#" id="backup" style="font-size:12px;color:#0a66c2">Export / import all hotkeys</a></div>
+  <script src="storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- Source for store screenshot 2: the shortcut list shown over a page. Render with store/make-screenshot.sh -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 1280px; height: 800px; overflow: hidden; position: relative; }
+  body { font-family: -apple-system, system-ui, "Segoe UI", sans-serif; background: #f3f5f9; color: #1d1d1f; }
+
+  /* a generic web page behind the pop-up */
+  .bar { height: 64px; background: #fff; border-bottom: 1px solid #e3e7ee; display: flex; align-items: center; padding: 0 40px; gap: 28px; }
+  .logo { width: 34px; height: 34px; border-radius: 9px; background: #7b8aa6; }
+  .nav { height: 12px; width: 84px; border-radius: 6px; background: #cfd6e3; }
+  .main { padding: 44px 40px; display: grid; grid-template-columns: 2fr 1fr; gap: 28px; }
+  .block { background: #fff; border: 1px solid #e3e7ee; border-radius: 12px; padding: 24px; }
+  .h { height: 20px; width: 260px; border-radius: 6px; background: #b9c3d6; margin-bottom: 22px; }
+  .l { height: 11px; border-radius: 6px; background: #dfe4ee; margin-bottom: 14px; }
+  .chart { height: 200px; border-radius: 10px; background: linear-gradient(180deg, #e8eefb, #dfe7f6); margin-bottom: 22px; }
+
+  /* the pop-up, same look as content.js */
+  .backdrop { position: absolute; inset: 0; background: rgba(15, 20, 30, .45); display: flex; align-items: center; justify-content: center; }
+  .card { box-sizing: border-box; width: 600px; background: #fff; border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,.35); padding: 22px; font-size: 16px; line-height: 1.4; }
+  h2 { margin: 0 0 14px; font-size: 18px; font-weight: 600; }
+  h2 span { color: #0a66c2; }
+  .row { display: flex; align-items: center; gap: 16px; padding: 12px 14px; border-radius: 9px; }
+  .row.hover { background: #eef3fb; }
+  .keys { flex: 0 0 auto; min-width: 110px; font: 600 16px ui-monospace, Menlo, monospace; background: #eef3fb; border-radius: 7px; padding: 4px 10px; white-space: nowrap; }
+  .row.hover .keys { background: #dce8f8; }
+  .url { flex: 1; color: #444; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .foot { margin-top: 14px; border-top: 1px solid #e5e5ea; padding-top: 12px; color: #6e6e73; font-size: 13.5px; }
+</style>
+</head>
+<body>
+  <div class="bar"><div class="logo"></div><div class="nav"></div><div class="nav"></div><div class="nav"></div></div>
+  <div class="main">
+    <div class="block"><div class="h"></div><div class="chart"></div><div class="l" style="width:92%"></div><div class="l" style="width:78%"></div><div class="l" style="width:85%"></div></div>
+    <div class="block"><div class="h" style="width:150px"></div><div class="l"></div><div class="l" style="width:70%"></div><div class="l"></div><div class="l" style="width:60%"></div><div class="l"></div></div>
+  </div>
+
+  <div class="backdrop">
+    <div class="card">
+      <h2>Hotkeys for <span>example.com</span></h2>
+      <div class="row"><span class="keys">⌃⌥⌘D</span><span class="url">example.com/dashboard</span></div>
+      <div class="row"><span class="keys">⌃⌘J</span><span class="url">example.com/invoices</span></div>
+      <div class="row hover"><span class="keys">⇧⌘1</span><span class="url">example.com/reports</span></div>
+      <div class="row"><span class="keys">⌘K  ⌘J</span><span class="url">example.com/billing</span></div>
+      <div class="row"><span class="keys">⌥G  B</span><span class="url">example.com/settings</span></div>
+      <div class="foot">Press a shortcut or click a row to go there. Esc or ⌥⌘/ closes this list.</div>
+    </div>
+  </div>
+</body>
+</html>

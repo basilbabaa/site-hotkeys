@@ -1,0 +1,9 @@
+dist/
+.DS_Store
+node_modules/
+
+# Local AI-assistant notes, never published
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+.claude/
